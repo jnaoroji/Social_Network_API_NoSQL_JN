@@ -70,60 +70,43 @@ module.exports = {
     }
   },
   // Add a new friend to the user's friend list
-  async addFriends(req, res) {
+  async addFriend(req, res) {
+    console.log('You are adding a friend to this users friend list');
+    console.log(req.body);
     try {
-      const user = await User.findOne({ _id: req.params.userId });
-
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: { friend: req.body } },
+        { runValidators: true, new: true }
+      );
       if (!user) {
-        return res.status(404).json({ message: 'No user with that ID' });
+        return res
+          .status(404)
+          .json({ message: 'No user found with that ID :(' });
       }
-
-      // Assuming that the friendId is provided in the request body
-      const { friendId } = req.body;
-
-      // Check if the friendId is valid or exists in the database
-      const friend = await User.findOne({ _id: friendId });
-      if (!friend) {
-        return res.status(404).json({ message: 'No friend with that ID' });
-      }
-
-      // Add the friend to the user's friend list
-      user.friends.push(friendId);
-      await user.save();
-
-      res.json({ message: 'Friend added successfully!' });
+      res.json(user);
     } catch (err) {
       res.status(500).json(err);
     }
   },
     // Remove a friend from a user's friend list
-    async removeFriends(req, res) {
-      try {
-        const user = await User.findOne({ _id: req.params.userId });
-  
-        if (!user) {
-          return res.status(404).json({ message: 'No user with that ID' });
-        }
-  
-        // Assuming that the friendId is provided in the request parameters
-        const { friendId } = req.params;
-  
-        // Check if the friendId is valid or exists in the database
-        const friend = await User.findOne({ _id: friendId });
-        if (!friend) {
-          return res.status(404).json({ message: 'No friend with that ID' });
-        }
-  
-        // Remove the friend from the user's friend list
-        const friendIndex = user.friends.indexOf(friendId);
-        if (friendIndex !== -1) {
-          user.friends.splice(friendIndex, 1);
-          await user.save();
-        }
-  
-        res.json({ message: 'Friend removed successfully!' });
-      } catch (err) {
-        res.status(500).json(err);
+  async removeFriend(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friend: { friendId: req.params.friendId } } },
+        { runValidators: true, new: true }
+      );
+
+      if (!user) {
+        return res
+          .status(404)
+          .json({ message: 'No user found with that ID :(' });
       }
-    },
+
+      res.json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
 };
