@@ -17,7 +17,7 @@ connection.once('open', async () => {
       await connection.dropCollection('users');
     }
 
-
+    User.get
   // Create empty array to hold the users
   const users = [];
 
@@ -51,23 +51,23 @@ connection.once('open', async () => {
   // Add users to the collection and await the results
   await User.collection.insertMany(users);
 
-  // Add friends to the user collection and await the results
-  for (let i = 0; i < users.length; i++) {
-    const randomFriendIndex = Math.floor(Math.random() * i); // Selects a random user as a friend
-    const randomFriend = users[randomFriendIndex];
-    // console.log(randomFriendIndex);
-    // console.log(randomFriend._id);
-    friends = randomFriend._id;
-    console.log("friend = "+ friends);
-    // console.log("users" + users)
-    // Initialize friends array if it doesn't exist
-    if (!users[i].friends) {
-      users[i].friends = [];
-    }
-    users[i].friends.push(friends);
-    console.log(users[i].friends);
+  // // Add friends to the user collection and await the results
+  // for (let i = 0; i < users.length; i++) {
+  //   const randomFriendIndex = Math.floor(Math.random() * i); // Selects a random user as a friend
+  //   const randomFriend = users[randomFriendIndex];
+  //   // console.log(randomFriendIndex);
+  //   // console.log(randomFriend._id);
+  //   friends = randomFriend._id;
+  //   console.log("friend = "+ friends);
+  //   // console.log("users" + users)
+  //   // Initialize friends array if it doesn't exist
+  //   if (!users[i].friends) {
+  //     users[i].friends = [];
+  //   }
+  //   users[i].friends.push(friends);
+  //   console.log(users[i].friends);
 
-  }
+  // }
 
   // Log out the seed data to indicate what should appear in the database
   console.table(users);
