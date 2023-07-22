@@ -25,11 +25,11 @@ connection.once('open', async () => {
   for (let i = 0; i < 20; i++) {
     
     // Get some random thought objects using a helper function that we imported from ./data
-    const thoughts = getRandomThoughts(5);
-    //insert into thoughts collection
-    await Thought.collection.insertMany(thoughts);
-    // get thought ids from array
-    const allThoughtIds = thoughts.map((thought) => thought._id);
+    // const thoughts = getRandomThoughts(5);
+    // //insert into thoughts collection
+    // await Thought.collection.insertMany(thoughts);
+    // // get thought ids from array
+    // const allThoughtIds = thoughts.map((thought) => thought._id);
       
 
     
@@ -41,7 +41,7 @@ connection.once('open', async () => {
     const user = {
       username,
       email,
-      thoughts: allThoughtIds, 
+      // thoughts: allThoughtIds, 
     };
     
     users.push(user);
@@ -50,8 +50,9 @@ connection.once('open', async () => {
 
   // Add users to the collection and await the results
   await User.collection.insertMany(users);
-
-  // // Add friends to the user collection and await the results
+  
+  // Add friends to the user collection and await the results
+  
   // for (let i = 0; i < users.length; i++) {
   //   const randomFriendIndex = Math.floor(Math.random() * i); // Selects a random user as a friend
   //   const randomFriend = users[randomFriendIndex];
@@ -64,10 +65,19 @@ connection.once('open', async () => {
   //   if (!users[i].friends) {
   //     users[i].friends = [];
   //   }
-  //   users[i].friends.push(friends);
-  //   console.log(users[i].friends);
+  
+    // users[i].friends.push(friends);
+    // console.log(users[i].friends);
 
   // }
+  // await User.collection.insertMany(friends);
+
+  // Add Thought to the collection and await the results
+  await Thought.collection.insertOne({
+    thoughtText: "I find solace in nature, and taking a walk in the woods always brings a sense of peace and clarity to my mind.",
+    username: "lernantino",
+    userId: "5edff358a0fcb779aa7b118b"
+  });
 
   // Log out the seed data to indicate what should appear in the database
   console.table(users);

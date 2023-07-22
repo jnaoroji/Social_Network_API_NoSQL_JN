@@ -4,10 +4,6 @@ const reactionSchema = require('./Reaction');
 
 const thoughtSchema = new Schema(
   {
-    thoughtId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
     thoughtText: {
       type: String,
       required: true,
@@ -20,7 +16,7 @@ const thoughtSchema = new Schema(
       get: (timestamp) => new Date(timestamp).toISOString(),
     },
     username: {
-      type: Schema.Types.ObjectId,
+      type: String,
       ref: 'User',
       required: true,
     },

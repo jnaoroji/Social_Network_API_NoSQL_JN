@@ -27,16 +27,23 @@ module.exports = {
   },
   // Create a thought
   async createThought(req, res) {
+    console.log("you are creating a thought for this user");
     try {
       const thought = await Thought.create(req.body);
+      console.log(req.body);
       const userId = (req.params.userId);
-      await User.findAndUpdate(userId, { $push: { thoughts: thought._id } });
+      await User.findOneAndUpdate(userId, { $push: { thoughts: thought._id } });
       res.json(thought);
+      console.log(thought);
+      console.log(User);
+    
+
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
     }
   },
+
   // Delete a thought
   async deleteThought(req, res) {
     try {
