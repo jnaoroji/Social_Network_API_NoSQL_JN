@@ -1,5 +1,11 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
+const moment = require ('moment');
+
+const options = {
+  timeZone: "Australia/Brisbane",
+  hour12: false, // Set to true for 12-hour clock format with AM/PM, false for 24-hour format
+};
 
 
 const thoughtSchema = new Schema(
@@ -13,7 +19,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (timestamp) => new Date(timestamp).toISOString(),
+      get: timestamp => moment(timestamp).format("MMM DD, YYYY [at] hh:mm a"),
     },
     username: {
       type: String,
@@ -25,6 +31,7 @@ const thoughtSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
+      getters: true
     },
     id: false,
   }
@@ -34,6 +41,7 @@ const thoughtSchema = new Schema(
 thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
+
 
 // Initialize the user model
 const Thought = model('thought', thoughtSchema);

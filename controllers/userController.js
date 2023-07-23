@@ -37,25 +37,30 @@ module.exports = {
   },
   // Delete a user + associated thoughts
   async deleteUser(req, res) {
+    console.log("you are deleting a user");
     try {
       const user = await User.findOneAndRemove({ _id: req.params.userId });
-
+      console.log(user);
       if (!user) {
         return res.status(404).json({ message: 'No such user exists' });
       }
+      const thoughts = user.thoughts;
+      
 
-      const thoughts = await Thought.findOneAndUpdate(
-        { users: req.params.userId },
-        { $pull: { users: req.params.userId } },
-        { new: true }
-      );
+      // Delete each thought associated with the user
+      for (const thought of thoughts) {
+      await Thought.deleteMany({ _id: thought._id });
+      }
 
+      console.log(thoughts);
       if (!thoughts) {
         return res.status(404).json({
           message: 'User deleted, but no thoughts found for this user',
         });
+      
       }
-
+     
+    
       res.json({ message: 'User and associated thoughts successfully deleted' });
     } catch (err) {
       console.log(err);
