@@ -75,7 +75,7 @@ module.exports = {
   //create a reaction to be stored in a single thoughts reactions array
   async addReaction(req, res) {
     console.log('You are adding a reaction to this thought');
-    console.log(req.body);
+   
     try {
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
@@ -108,7 +108,7 @@ module.exports = {
             .json({ message: 'No thought found with that ID :(' });
         }
   
-        res.json(thought);
+        res.json({ message: 'Reaction deleted!' });
       } catch (err) {
         res.status(500).json(err);
       }

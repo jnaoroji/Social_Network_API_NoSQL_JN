@@ -368,7 +368,7 @@ These screenshots show my app's functionality:
 - GET route for Users by ID: 
 ![GET Users by ID](./assets/UserbyID.png)
 
-- GET route for Users by ID: 
+- GET route for Thoughts by ID: 
 ![GET Thoughts by ID](./assets/ThoughtbyID.png)
 
 - POST route for Users: 
@@ -380,7 +380,15 @@ These screenshots show my app's functionality:
 - DELETE route for Users (also deletes associated thoughts): 
 ![Delete route for users](./assets/deleteUser%20and%20associated%20thoughts.png)
 
-In addition to these routes for USERS, my walkthrough video will show the POST, PUT, and DELETE routes for THOUGHTS being tested in Insomnia.
+- POST route for Thoughts: 
+![POST Thoughts](./assets/CreateThought.png)
+
+- PUT route for Thoughts: 
+![PUT route for Thoughts](./assets/Update%20Thought.png)
+
+- DELETE route for Thoughts (also deletes associated thoughts): 
+![Delete route for Thoughts](./assets/DeleteThought.png)
+
 
 - POST route for Friends: 
 ![POST Friends](./assets/AddFriend.png)
@@ -388,7 +396,12 @@ In addition to these routes for USERS, my walkthrough video will show the POST, 
 - DELETE route for Friends: 
 ![Delete route for friends](./assets/RemoveFriend.png)
 
-In addition to these routes for FRIENDS, my walkthrough video will show the POST and DELETE routes for REACTIONS to thoughts being tested in Insomnia.
+- POST route for Reactions: 
+![POST reactions](./assets/CreateReaction.png)
+
+- DELETE route for Reactions: 
+![Delete route for Reactions](./assets/RemoveReaction.png)
+
 
 ## License
 

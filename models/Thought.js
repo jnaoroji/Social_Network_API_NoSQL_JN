@@ -2,12 +2,8 @@ const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 const moment = require ('moment');
 
-const options = {
-  timeZone: "Australia/Brisbane",
-  hour12: false, // Set to true for 12-hour clock format with AM/PM, false for 24-hour format
-};
 
-
+// Schema to create Thought model
 const thoughtSchema = new Schema(
   {
     thoughtText: {
