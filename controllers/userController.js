@@ -40,7 +40,7 @@ module.exports = {
     console.log("you are deleting a user");
     try {
       const user = await User.findOneAndRemove({ _id: req.params.userId });
-      console.log(user);
+      
       if (!user) {
         return res.status(404).json({ message: 'No such user exists' });
       }
@@ -52,7 +52,7 @@ module.exports = {
       await Thought.deleteMany({ _id: thought._id });
       }
 
-      console.log(thoughts);
+      
       if (!thoughts) {
         return res.status(404).json({
           message: 'User deleted, but no thoughts found for this user',
@@ -88,7 +88,6 @@ module.exports = {
   // Add a new friend to the user's friend list
   async addFriend(req, res) {
     console.log('You are adding a friend to this users friend list');
-    console.log(req.body);
     try {
       const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
