@@ -45,7 +45,7 @@ This application won’t be deployed, however here is a link to a walk through v
 - [Mongoose](https://www.npmjs.com/package/mongoose)
 - [Moment.js](https://momentjs.com/docs/)
 - [Web MDN locales](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#locales)
--  [MongoDB installation guide on The Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/mongodb/how-to-install-mongodb)
+- [MongoDB installation guide on The Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/mongodb/how-to-install-mongodb)
 
 
 
@@ -55,21 +55,21 @@ The following animations show examples i was given of what the application's API
 
 The following animation shows GET routes to return all users and all thoughts being tested in Insomnia:
 
-![Demo of GET routes to return all users and all thoughts being tested in Insomnia.](./Assets/18-nosql-homework-demo-01.gif)
+![Demo of GET routes to return all users and all thoughts being tested in Insomnia.](./assets/18-nosql-homework-demo-01.gif)
 
 The following animation shows GET routes to return a single user and a single thought being tested in Insomnia:
 
-![Demo that shows GET routes to return a single user and a single thought being tested in Insomnia.](./Assets/18-nosql-homework-demo-02.gif)
+![Demo that shows GET routes to return a single user and a single thought being tested in Insomnia.](./assets/18-nosql-homework-demo-02.gif)
 
 The following animation shows the POST, PUT, and DELETE routes for users being tested in Insomnia:
 
-![Demo that shows the POST, PUT, and DELETE routes for users being tested in Insomnia.](./Assets/18-nosql-homework-demo-03.gif)
+![Demo that shows the POST, PUT, and DELETE routes for users being tested in Insomnia.](./assets/18-nosql-homework-demo-03.gif)
 
 In addition to this, your walkthrough video should show the POST, PUT, and DELETE routes for thoughts being tested in Insomnia.
 
 The following animation shows the POST and DELETE routes for a user’s friend list being tested in Insomnia:
 
-![Demo that shows the POST and DELETE routes for a user’s friend list being tested in Insomnia.](./Assets/18-nosql-homework-demo-04.gif)
+![Demo that shows the POST and DELETE routes for a user’s friend list being tested in Insomnia.](./assets/18-nosql-homework-demo-04.gif)
 
 In addition to this, your walkthrough video should show the POST and DELETE routes for reactions to thoughts being tested in Insomnia.
 
